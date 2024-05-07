@@ -1,0 +1,200 @@
+<html>
+<head>
+    <title>DearDiary/Calendar Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Buda:300' rel='stylesheet'>
+    <style>
+      body{ font-family:'Buda', sans-serif;;}
+    </style>
+</head>
+<body>
+ <header>
+    <nav>
+        <div class="logo">DearDiary</div>
+        <ul>
+            <li><a href="DearDiary.html">Home</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="login.html">Sign In</a></li>
+        </ul>
+    </nav>
+</header>
+<div class="container calander_container">
+  <div class="row">
+
+      <div class="col-md-9">
+          <h1>Diary Calendar</h1>
+
+          <div class="container-c">
+
+              <div class="color-circles">
+                  <div class="color-circle" data-color="red"></div>
+                  <div class="color-circle" data-color="blue"></div>
+                  <div class="color-circle" data-color="green"></div>
+                  <div class="color-circle" data-color="yellow"></div>
+                  <div class="color-circle" data-color="orange"></div>
+                  <div class="color-circle" data-color="gray"></div>
+                  
+              </div>
+
+              <form id="searchForm">
+                  <div class="input-group">
+                      <input type="text" id="searchInput" class="form-control" placeholder="Search by Subject or mood or Color">
+                  </div>
+              </form>
+
+              <div id="calendar">
+                  <table class="table">
+                      <thead>
+                      <tr>
+                          <th>Date</th>
+                          <th>Subject</th>
+                          <th>Mood</th>
+                          <th>Color</th>
+                      </tr>
+                      </thead>
+                      <tbody id="calendarBody">
+                      <!-- Data will be inserted here dynamically -->
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<footer id="contact" class="footer">
+    <div class="contact-info">
+        <h3>Contact Us</h3>
+        <p>Email: Raneem7300@outlook.sa</p>
+    </div>
+    <div class="usefillink">
+   <a href="profile.html">Profail</a>
+            <a href="calender_page.html">Calender</a>
+            <a href=writing_diary_page.html>Writing</a>
+            <a href="control_panel.html">Control Panel</a>
+    </div>
+</footer>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    // Make an AJAX request to fetch the data from the PHP file
+    $.ajax({
+        url: 'phpfile/calendar_data.php',
+        type: 'GET',
+        dataType: 'json',
+        success: function(data) {
+            // Update the HTML content dynamically with the fetched data
+            var calendarBody = $('#calendarBody');
+
+            // Generate HTML markup for table rows
+            data.forEach(function(row) {
+                var tr = $('<tr>');
+                tr.append('<td>' + row.date + '</td>');
+                tr.append('<td>' + row.character + '</td>');
+                tr.append('<td>' + row.mood + '</td>');
+                tr.append('<td style="background-color:'+row.wallpaperColor+';"</td>');
+                calendarBody.append(tr);
+            });
+        },
+        error: function(xhr, status, error) {
+            console.log('An error occurred while fetching data: ' + error);
+        }
+    });
+});
+
+
+  // Get the search form and input element
+  const searchForm = document.getElementById('searchForm');
+  const searchInput = document.getElementById('searchInput');
+
+  // Add event listener to the search form
+  searchForm.addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent form submission
+
+    // Get the search input value
+    const searchValue = searchInput.value.trim();
+
+    // Call the search function with the search value
+    searchCalendarData(searchValue);
+  });
+
+  // Function to search the calendar data
+  function searchCalendarData(searchValue) {
+    // Get all the rows in the calendar table body
+    const rows = document.querySelectorAll('#calendarBody tr');
+
+    // Loop through each row and check if it matches the search value
+    rows.forEach(function(row) {
+      const date = row.cells[0].textContent.toLowerCase();
+      const character = row.cells[1].textContent.toLowerCase();
+      const wallpaper = row.cells[2].textContent.toLowerCase();
+
+      // Show or hide the row based on the search value
+      if (date.includes(searchValue) || character.includes(searchValue) || wallpaper.includes(searchValue)) {
+        row.style.display = '';
+      } else {
+        row.style.display = 'none';
+      }
+    });
+
+  }
+  // Get all the color circles
+  const colorCircles = document.querySelectorAll('.color-circle');
+
+  // Add click event listener to each color circle
+  colorCircles.forEach(function(circle) {
+    circle.addEventListener('click', function() {
+      const selectedColor = this.dataset.color;
+
+      // Call the search function with the selected color
+      searchCalendarData(selectedColor);
+    });
+  });
+  
+  
+  // ...
+
+  // Function to search the calendar data
+  function searchCalendarData(searchValue, searchColor) {
+    // Get all the rows in the calendar table body
+    const rows = document.querySelectorAll('#calendarBody tr');
+
+    // Loop through each row and check if it matches the search value and color
+    rows.forEach(function(row) {
+      const date = row.cells[0].textContent.toLowerCase();
+      const character = row.cells[1].textContent.toLowerCase();
+      const wallpaper = row.cells[2].textContent.toLowerCase();
+      const wallpaperColor = row.cells[3].style.backgroundColor.toLowerCase();
+
+      // Show or hide the row based on the search value and color
+      if (
+        (date.includes(searchValue) || character.includes(searchValue) || wallpaper.includes(searchValue)) &&
+        (searchColor === '' || wallpaperColor === searchColor)
+      ) {
+        row.style.display = '';
+      } else {
+        row.style.display = 'none';
+      }
+    });
+  }
+
+  // ...
+
+  // Add click event listener to each color circle
+  colorCircles.forEach(function(circle) {
+    circle.addEventListener('click', function() {
+      const selectedColor = this.dataset.color;
+
+      // Call the search function with the selected color
+      searchCalendarData('', selectedColor);
+    });
+  });
+
+
+
+</script>
+
+</body>
+</html>

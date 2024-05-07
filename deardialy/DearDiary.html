@@ -1,0 +1,123 @@
+<html>
+<head>
+    <title>DearDiary</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href='https://fonts.googleapis.com/css?family=Buda:300' rel='stylesheet'>
+</head>
+<body>
+ <header>
+    <nav>
+        <div class="logo">DearDiary</div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#ser">Features</a></li>
+            <li><a href="#contents">Content</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="login.html">Sign In</a></li>
+        </ul>
+    </nav>
+</header>
+
+    <section id="home" class="hero" style="background-image:url('https://img.freepik.com/free-photo/close-up-hand-writing-notebook_23-2148877761.jpg?w=826&t=st=1711880342~exp=1711880942~hmac=b6b2158738b049eff114ae76616de724f0289527fd226528de99bbf29b04891e');">
+        <div class="hero-content">
+            <h1>dear diary</h1>
+            <p>a nwe diary perspective!</p>
+            <a href="writing_diary_page.html" class="btn">Start writing your diary ></a>
+        </div>
+    </section>
+    <br><br>
+<hr>
+<section id="introo" class="introo">
+     <div class="intro">
+        <p>At Deardiary, we believe that every word you write has the potential to inspire, heal, and transform. Begin your diary writing journey with us today and unlock a world of creativity and self-expression!</p>
+        
+    </div>
+</section>
+   <hr>
+   <br>
+<section id="ser" class="ser"> <br><br><br>
+     <h1>Features</h1>
+        <h2>This is some of our features</h2>
+<section id="features" class="features">
+   
+    <div class="feat">
+        <div class="feature">
+            <img src="image/Picture7.png" alt="feature 1">
+            <h3>Customizable Character</h3>
+            <p>Customize your character depending
+             on your feelings!</p>
+        </div>
+    </div>
+    <div class="feat">
+        <div class="feature">
+            <img src="image/feeel.png" alt="feature 2">
+            <h3>Moods</h3>
+            <p>Specify your emotions or moods
+             for each journal entry</p>
+        </div>
+    </div>
+    <div class="feat">
+        <div class="feature">
+            <img src="image/Picture6.png"alt="feature 3">
+            <h3>New Way to Write</h3>
+            <p>An easy way to write your diary and save them</p>
+        </div>
+    </div>
+</section>
+</section>
+
+
+<br><br><br>
+    <section id="contents" class="contents">
+        <div class="content">
+            <img src="image/Picture1.png" alt="Custom">
+            <h3>custom your character</h3>
+            <p>Customize your character in "Dear Diary" to enhance journaling. Personalize appearance, reactions, and backgrounds, fostering self-reflection and creativity in writing.</p>
+             <a href="writing_diary_page.html" class="btn">CUSTOM </a>
+        </div>
+        <div class="content">
+            <img src="image/Picture4.png" alt="Calender">
+             <h3>your diary calender</h3>
+            <p>Explore your journaling journeys calendar, visually representing your entries over time. You can view by moods or days, this enhances reflection and organization in your writing experience.</p>
+            <a href="calender_page.html" class="btn">VIEW CALENDER </a>
+    </section>
+
+    <footer id="contact" class="footer">
+        <div class="contact-info">
+            <h3>Contact Us</h3>
+            <p>Email: Raneem7300@outlook.sa</p>
+        </div>
+        <div class="usefillink">
+            <a href="profile.html">Profail</a>
+            <a href="calender_page.html">Calender</a>
+            <a href=writing_diary_page.html>Writing</a>
+            <a href="control_panel.html">Control Panel</a>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    const btn = document.querySelector('.btn');
+
+    // Smooth scrolling for anchor links
+    const anchorLinks = document.querySelectorAll('a[href^="#"]');
+    anchorLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+});
+
+    </script>
+</body>
+</html>

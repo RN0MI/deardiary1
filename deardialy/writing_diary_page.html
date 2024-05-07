@@ -1,0 +1,282 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Writing Page</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+   <link href='https://fonts.googleapis.com/css?family=Buda:300' rel='stylesheet'>
+  <style>
+    
+   body { font-family:'Buda', sans-serif;;}
+
+    .image-box {
+      width: 300px;
+      height: 300px;
+      background-color: #ffffff;
+      border: 1px solid #dddddd;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .sex-options {
+      width: auto;
+      height: 300px;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+
+    .img-options {
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+    }
+    .title{
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <nav>
+        <div class="logo">DearDiary</div>
+        <ul>
+            <li><a href="DearDiary.html">Home</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="login.php">Sign In</a></li>
+        </ul>
+    </nav>
+</header>
+<div class="container">
+  <form action="phpfile/writing_page.php" method="post">
+    <h1 class="title"> Diary Writing </h1>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="image-box" id="image-box">
+          <img class="image-box" id="sessionImage" style="width: 300; height: 300;" src="" alt="Session Value Image">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="sex-options">
+          <div class="row">
+            <div class="col-md-9">
+              <div class="container-c">
+                <div class="color-circles">
+                  <div class="color-circle" data-color="red" onclick="changeImageColor(this)"></div>
+                  <div class="color-circle" data-color="gray" onclick="changeImageColor(this)"></div>
+                  <div class="color-circle" data-color="orange" onclick="changeImageColor(this)"></div>
+                  <div class="color-circle" data-color="blue" onclick="changeImageColor(this)"></div>
+                  <div class="color-circle" data-color="green" onclick="changeImageColor(this)"></div>
+                  <div class="color-circle" data-color="yellow" onclick="changeImageColor(this)"></div>
+                </div>
+              </div>
+            </div>
+                            <input type="hidden" id="colorInput" name="color" value="">
+
+
+            <div class="col-md-3">
+              <label for="mood">Mood:</label>
+              <select id="mood" name="mood" class="form-control" required onchange="toggleColorCircles()">
+                <option value="Happy">Happy</option>
+                <option value="Sad">Sad</option>
+                <option value="Angry">Angry</option>
+                <option value="Excited">Excited</option>
+                <option value="Calm">Calm</option>
+                <option value="Tired">Tired</option>
+              </select>
+
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-md-6">
+              <ul>
+                <li>
+                  <input type="radio" name="imageOption" value="a.png-removebg-preview" onclick="changeImage(this)">
+                  <img class="img-options" src="image/sad.png" alt="">
+                </li>
+                <li>
+                  <input type="radio" name="imageOption" value="f.png-removebg-preview" onclick="changeImage(this)">
+                  <img class="img-options" src="image/excited2.png" alt="">
+                </li>
+                <li>
+                  <input type="radio" name="imageOption" value="c.png-removebg-preview" onclick="changeImage(this)" >
+                  <img class="img-options" src="image/smile.png" alt="">
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <ul>
+                <li>
+                  <input type="radio" name="imageOption" value="h.png-removebg-preview" onclick="changeImage(this)">
+                  <img class="img-options" src="image/scarf.png" alt="">
+                </li>
+                <li>
+                  <input type="radio" name="imageOption" value="e.png-removebg-preview" onclick="changeImage(this)">
+                  <img class="img-options" src="image/angary1.png" alt="">
+                </li>
+                <li>
+                  <input type="radio" name="imageOption" value="b.png-removebg-preview" onclick="changeImage(this)">
+                  <img class="img-options" src="image/silent.png" alt="">
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+  
+    <div class="form-group">
+      <br/>
+      
+        <label for="type">Type:</label>
+        <select id="type" name="type" class="form-control" required onchange="toggleColorCircles()">
+          <option value="boy">Boy</option>
+          <option value="girl">girl</option>
+        </select>
+    </div>
+    <div class="form-group">
+      
+      <label for="subject">Subject:</label>
+      <input type="text" id="subject" name="subject" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="article">Article:</label>
+      <textarea id="article" name="article" class="form-control"></textarea>
+    </div>
+    <button type="submit" class="searchButton">Submit</button>
+    
+
+      </select>
+    </div>
+  </form>
+  <div id="successMessage" class="hidden">Diary entry saved successfully!</div>
+</div>
+
+  <footer id="contact" class="footer">
+    <div class="contact-info">
+        <h3>Contact Us</h3>
+        <p>Email: Raneem7300@outlook.sa</p>
+    </div>
+    <div class="usefillink">
+       <a href="profile.html">Profail</a>
+            <a href="calender_page.html">Calender</a>
+            <a href=writing_diary_page.html>Writing</a>
+            <a href="control_panel.html">Control Panel</a>
+    </div>
+</footer>
+
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+function changeImage(checkbox) {
+  var imageBox = document.getElementById("image-box");
+  var sessionImage = document.getElementById("sessionImage");
+  var typeSelect = document.getElementById("type");
+  var selectedType = typeSelect.value;
+  if (checkbox.checked && selectedType === "girl") {
+    var imageName = checkbox.value;
+    // changeBackgroundColor(checkbox);
+      sessionImage.src = "image/" + imageName + ".png";
+      sessionImage.alt = imageName;
+  }
+  else if (checkbox.checked && selectedType === "boy") {
+    var imageName = checkbox.value;
+    // changeBackgroundColor(checkbox);
+      sessionImage.src = "image/1" + imageName + ".png";
+      sessionImage.alt = imageName;
+  } else {
+    sessionImage.src = "image/Picture1.png";
+    sessionImage.alt = "Select Your Mode";
+  }
+}
+
+
+   // Create an XMLHttpRequest object
+   var xhr = new XMLHttpRequest();
+
+// Define the PHP file URL
+var url = "phpfile/display_image.php";
+
+// Send a GET request to the PHP file
+xhr.open("GET", url, true);
+xhr.send();
+
+// Handle the response
+xhr.onreadystatechange = function() {
+  var colorCircles = document.getElementsByClassName("color-circle");
+
+for (var i = 0; i < colorCircles.length; i++) {
+  colorCircles[i].style.display = "none";
+}
+    if (xhr.readyState === 4 && xhr.status === 200) {
+        // Get the session value from the response
+        var sessionValue = xhr.responseText;
+
+        // Update the image source with the session value
+        document.getElementById("sessionImage").src =  sessionValue;
+    }
+    
+                // Set the width and height of the image to match the image-box div
+                var imageBox = document.getElementById("image-box");
+                var image = document.getElementById("sessionImage");
+                image.style.width = imageBox.offsetWidth + "px";
+                image.style.height = imageBox.offsetHeight + "px";
+};
+function changeImageColor(element) {
+    var sessionImage = document.getElementById("sessionImage");
+    var color = element.getAttribute("data-color");
+    var colorInput = document.getElementById("colorInput");
+    sessionImage.style.background = color;
+    colorInput.value = color;
+    console.log(color);
+  }
+
+  function toggleColorCircles() {
+  var moodSelect = document.getElementById("mood");
+
+
+  var selectedMood = moodSelect.value;
+  var selectedColorCircle;
+
+  if (selectedMood === "Happy") {
+    selectedColorCircle = document.querySelector(".color-circle[data-color='yellow']");
+    selectedColorCircle.style.display="block";
+    changeImageColor(selectedColorCircle);
+
+  } else if (selectedMood === "Sad") {
+    selectedColorCircle = document.querySelector(".color-circle[data-color='gray']");
+    selectedColorCircle.style.display="block";
+    changeImageColor(selectedColorCircle);
+
+  } else if (selectedMood === "Angry") {
+    selectedColorCircle = document.querySelector(".color-circle[data-color='red']");
+    selectedColorCircle.style.display="block";
+    changeImageColor(selectedColorCircle);
+
+  } else if (selectedMood === "Excited") {
+    selectedColorCircle = document.querySelector(".color-circle[data-color='orange']");
+    selectedColorCircle.style.display="block";
+    changeImageColor(selectedColorCircle);
+
+  } else if (selectedMood === "Calm") {
+    selectedColorCircle = document.querySelector(".color-circle[data-color='blue']");
+    selectedColorCircle.style.display="block";
+    changeImageColor(selectedColorCircle);
+
+  } else if (selectedMood === "Tired") {
+    selectedColorCircle = document.querySelector(".color-circle[data-color='green']");
+    selectedColorCircle.style.display="block";
+    changeImageColor(selectedColorCircle);
+
+  }
+
+  if (selectedColorCircle) {
+    selectedColorCircle.style.display = "none";
+  }
+}
+      </script>
+</body>
+</html> 

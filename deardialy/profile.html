@@ -1,0 +1,99 @@
+<html>
+<head>
+    <title>Profile</title>
+    <link href='https://fonts.googleapis.com/css?family=Buda:300' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    
+
+</head>
+    <body>
+
+        <header>
+            <nav>
+                <div class="logo">DearDiary</div>
+                <ul>
+                    <li><a href="DearDiary.html">Home</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="login.php">Sign In</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+    <div class="container rounded bg-white mt-5 mb-5">
+        <div class="">
+          <h1>Welcome to Your Profile Page</h1>
+        
+          
+        <div class="row mt-3">
+          <form method="POST" action="phpfile/update_account.php">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username"><br><br>
+    
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email"><br><br>
+    
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password"><br><br>
+    
+            <!-- Additional account settings fields can be added here -->
+    
+            <input type="submit" value="Update Account Settings">
+        </form>
+    
+        </div>
+        
+          <h2>Privacy Settings</h2>
+          <form>
+            <label for="journalPrivacy">Journal Privacy:</label>
+            <select id="journalPrivacy" name="journalPrivacy">
+              <option value="public">Public</option>
+              <option value="friends">Friends Only</option>
+              <option value="private">Private</option>
+            </select><br><br>
+        
+            <label for="profilePrivacy">Profile Privacy:</label>
+            <select id="profilePrivacy" name="profilePrivacy">
+              <option value="public">Public</option>
+              <option value="friends">Friends Only</option>
+              <option value="private">Private</option>
+            </select><br><br>
+        
+            <!-- Additional privacy settings fields can be added here -->
+        
+            <input type="submit" value="Update Privacy Settings">
+          </form>
+
+        </div>
+    </div>
+    <footer id="contact" class="footer">
+        <div class="contact-info">
+            <h3>Contact Us</h3>
+            <p>Email: Raneem7300@outlook.sa</p>
+        </div>
+        <div class="usefillink">
+       <a href="profile.html">Profail</a>
+            <a href="calender_page.html">Calender</a>
+            <a href=writing_diary_page.html>Writing</a>
+            <a href="control_panel.html">Control Panel</a>
+        </div>
+    </footer>
+        
+          <script>
+            // Add your JavaScript code here
+            const accountSettingsForm = document.getElementById('accountSettingsForm');
+            const privacySettingsForm = document.getElementById('privacySettingsForm');
+        
+            accountSettingsForm.addEventListener('submit', function(event) {
+              event.preventDefault();
+              // Perform account settings update logic here
+              alert('Account settings updated successfully!');
+            });
+        
+            privacySettingsForm.addEventListener('submit', function(event) {
+              event.preventDefault();
+              // Perform privacy settings update logic here
+              alert('Privacy settings updated successfully!');
+            });
+          </script>
+   </body>
